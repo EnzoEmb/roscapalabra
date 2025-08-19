@@ -1,5 +1,10 @@
 import "./style.css";
 
+const soundClock = new Audio("/sfx/clock-ticking.mp3");
+const soundCorrect = new Audio("/sfx/correct.mp3");
+const soundIncorrect = new Audio("/sfx/wrong.mp3");
+const soundSkip = new Audio("/sfx/skip.mp3");
+
 const clockElement = document.querySelector(".clock");
 const initialTime = 120;
 let timeInterval;
@@ -45,6 +50,8 @@ function setPasapalabra(letterNumber) {
   const pasapalabraLetter = document.querySelector(`.letter-${letterNumber}`);
   if (pasapalabraLetter) {
     pasapalabraLetter.classList.add("pasa");
+    soundSkip.currentTime = 0;
+    soundSkip.play();
   }
 }
 
@@ -52,6 +59,8 @@ function setCorrecta(letterNumber) {
   const correctaLetter = document.querySelector(`.letter-${letterNumber}`);
   if (correctaLetter) {
     correctaLetter.classList.add("correcta");
+    soundCorrect.currentTime = 0;
+    soundCorrect.play();
   }
 }
 
@@ -59,6 +68,8 @@ function setIncorrecta(letterNumber) {
   const incorrectaLetter = document.querySelector(`.letter-${letterNumber}`);
   if (incorrectaLetter) {
     incorrectaLetter.classList.add("incorrecta");
+    soundIncorrect.currentTime = 0;
+    soundIncorrect.play();
   }
 }
 
@@ -93,12 +104,15 @@ function startCountdown() {
   timeInterval = setInterval(() => {
     if (timeLeft <= 0) {
       clearInterval(timeInterval);
-      clockElement.textContent = "Time's up!";
+      // clockElement.textContent = "Time's up!";
     } else {
       clockElement.textContent = timeLeft;
       timeLeft--;
     }
   }, 1000);
+
+  soundClock.currentTime = 0;
+  soundClock.play();
 }
 
 function stopCountdown() {
@@ -106,4 +120,5 @@ function stopCountdown() {
   clockElement.classList.remove("active");
 
   clearInterval(timeInterval);
+  soundClock.pause();
 }
