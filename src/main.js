@@ -83,6 +83,7 @@ function removeActiveLetter() {
 
 function startCountdown() {
   console.log("Countdown started");
+  clockElement.classList.add("active");
 
   // check that countdown is not playing
   if (timeInterval) {
@@ -102,5 +103,7 @@ function startCountdown() {
 
 function stopCountdown() {
   console.log("Countdown stopped");
+  clockElement.classList.remove("active");
+
   clearInterval(timeInterval);
 }
