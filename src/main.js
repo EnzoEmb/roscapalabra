@@ -16,7 +16,17 @@ channel.onmessage = (e) => {
   if (e.data.action === "play") {
     startCountdown();
   }
+
   if (e.data.action === "pasapalabra") {
+    stopCountdown();
+  }
+
+  if (e.data.action === "correcta") {
+    // Handle correcta action
+  }
+
+  if (e.data.action === "incorrecta") {
+    // Handle incorrecta action
     stopCountdown();
   }
 };
