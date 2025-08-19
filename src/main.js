@@ -84,6 +84,11 @@ function removeActiveLetter() {
 function startCountdown() {
   console.log("Countdown started");
 
+  // check that countdown is not playing
+  if (timeInterval) {
+    return;
+  }
+
   timeInterval = setInterval(() => {
     if (timeLeft <= 0) {
       clearInterval(timeInterval);
