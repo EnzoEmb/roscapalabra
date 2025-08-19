@@ -22,7 +22,7 @@ channel.onmessage = (e) => {
 
   if (e.data.action === "pasapalabra") {
     setPasapalabra(activeLetter);
-    activeLetter++;
+    sumActiveLetter();
     removeActiveLetter();
     stopCountdown();
   }
@@ -30,17 +30,14 @@ channel.onmessage = (e) => {
   if (e.data.action === "correcta") {
     // Handle correcta action
     setCorrecta(activeLetter);
-    activeLetter++;
-    if (activeLetter > numberOfLetters) {
-      activeLetter = 1; // Loop back to the first letter
-    }
+    sumActiveLetter();
     setActiveLetter(activeLetter);
   }
 
   if (e.data.action === "incorrecta") {
     // Handle incorrecta action
     setIncorrecta(activeLetter);
-    activeLetter++;
+    sumActiveLetter();
     removeActiveLetter();
     stopCountdown();
   }
@@ -49,6 +46,7 @@ channel.onmessage = (e) => {
 function setPasapalabra(letterNumber) {
   const pasapalabraLetter = document.querySelector(`.letter-${letterNumber}`);
   if (pasapalabraLetter) {
+    cleanLetterClasses(letterNumber);
     pasapalabraLetter.classList.add("pasa");
     soundSkip.currentTime = 0;
     soundSkip.play();
@@ -58,6 +56,7 @@ function setPasapalabra(letterNumber) {
 function setCorrecta(letterNumber) {
   const correctaLetter = document.querySelector(`.letter-${letterNumber}`);
   if (correctaLetter) {
+    cleanLetterClasses(letterNumber);
     correctaLetter.classList.add("correcta");
     soundCorrect.currentTime = 0;
     soundCorrect.play();
@@ -67,6 +66,7 @@ function setCorrecta(letterNumber) {
 function setIncorrecta(letterNumber) {
   const incorrectaLetter = document.querySelector(`.letter-${letterNumber}`);
   if (incorrectaLetter) {
+    cleanLetterClasses(letterNumber);
     incorrectaLetter.classList.add("incorrecta");
     soundIncorrect.currentTime = 0;
     soundIncorrect.play();
@@ -82,6 +82,25 @@ function setActiveLetter(letterNumber) {
   }
   if (newActiveLetter) {
     newActiveLetter.classList.add("active");
+  }
+}
+
+function sumActiveLetter() {
+  activeLetter++;
+  if (activeLetter > numberOfLetters) {
+    activeLetter = 1;
+    // clean pasapalabra letters
+    let pasapalabra_letters = document.querySelectorAll(".letter.pasa");
+    pasapalabra_letters.forEach((letter) => {
+      letter.classList.remove("pasa");
+    });
+  }
+}
+
+function cleanLetterClasses(letterNumber) {
+  const letter = document.querySelector(`.letter-${letterNumber}`);
+  if (letter) {
+    letter.classList.remove("correcta", "incorrecta", "pasa");
   }
 }
 
