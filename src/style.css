@@ -22,7 +22,7 @@ body {
 #roscapalabra {
   width: 100%;
   height: 100dvh;
-  /* background: orange; */
+  background: orange;
   display: flex;
   align-items: center;
   justify-content: center;
