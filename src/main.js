@@ -1,27 +1,41 @@
 import "./style.css";
 
-const rosca = document.querySelector(".rosca");
-console.log(window.obsstudio);
-// print on screen window.obsstudio result
-if (window.obsstudio) {
-  const obs = window.obsstudio;
-  // print on document.body, dump the result
-  const obsInfo = document.createElement("div");
-  obsInfo.textContent = JSON.stringify(obs, null, 2);
-  obsInfo.style.whiteSpace = "pre-wrap";
-  obsInfo.style.color = "white";
-  obsInfo.style.backgroundColor = "black";
-  obsInfo.style.padding = "10px";
-  obsInfo.style.position = "fixed";
-  obsInfo.style.top = "10px";
-  obsInfo.style.left = "10px";
-  obsInfo.style.zIndex = "1000";
-  document.body.appendChild(obsInfo);
-}
+const clockElement = document.querySelector(".clock");
+const initialTime = 120;
+let timeInterval,
+  timeLeft = initialTime;
 
-const channel = new BroadcastChannel("obs-bridge");
+const channel = new BroadcastChannel("roscopalabra1548");
+
 channel.onmessage = (e) => {
-  if (e.data.action === "changeText") {
-    document.querySelector("#myElement").textContent = e.data.value;
+  // console.log("Received message:", e);
+  // if (e.data.action === "changeText") {
+  //   document.querySelector("#myElement").textContent = e.data.value;
+  // }
+
+  if (e.data.action === "play") {
+    startCountdown();
+  }
+  if (e.data.action === "pasapalabra") {
+    stopCountdown();
   }
 };
+
+function startCountdown() {
+  console.log("Countdown started");
+
+  timeInterval = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(timeInterval);
+      clockElement.textContent = "Time's up!";
+    } else {
+      clockElement.textContent = timeLeft;
+      timeLeft--;
+    }
+  }, 1000);
+}
+
+function stopCountdown() {
+  console.log("Countdown stopped");
+  clearInterval(timeInterval);
+}
