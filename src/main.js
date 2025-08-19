@@ -10,11 +10,6 @@ let numberOfLetters = 27;
 const channel = new BroadcastChannel("roscopalabra1548");
 
 channel.onmessage = (e) => {
-  // console.log("Received message:", e);
-  // if (e.data.action === "changeText") {
-  //   document.querySelector("#myElement").textContent = e.data.value;
-  // }
-
   if (e.data.action === "play") {
     setActiveLetter(activeLetter);
     startCountdown();
