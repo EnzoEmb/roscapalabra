@@ -95,6 +95,10 @@ footer {
       border-color: #5b6273;
     }
   }
+  .input-checkbox {
+    display: flex;
+    gap: 5px;
+  }
   .minititle {
     font-size: 12px;
   }

@@ -6,6 +6,9 @@ const default_instance_name = "rosco_rEdKggz6Pyt9eO_" + params.get("instance");
 
 const main_container = document.querySelector("#controls");
 
+// settings
+const checkbox_sound = document.querySelector("#enable_sound");
+
 function initInstance(instance_name) {
   const channel = new BroadcastChannel(instance_name);
   const instance_container = document.querySelector(`.instance[data-id="${instance_name}"]`);
@@ -16,6 +19,10 @@ function initInstance(instance_name) {
   const btn_incorrecta = instance_container.querySelector(".btn_incorrecta");
   const btn_resetear = instance_container.querySelector(".btn_reset");
   const time_left = instance_container.querySelector(".btn_time_left");
+
+  checkbox_sound.addEventListener("change", () => {
+    channel.postMessage({ action: "sound", value: checkbox_sound.checked });
+  });
 
   btn_resetear.addEventListener("click", () => {
     channel.postMessage({ action: "resetear" });

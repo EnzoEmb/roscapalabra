@@ -14,6 +14,7 @@ let numberOfLetters = 27;
 let isFirstRound = true;
 let isLastWord = false;
 let isGameFinished = false;
+let soundEnabled = true;
 
 const params = new URLSearchParams(window.location.search);
 const instance_name = "rosco_rEdKggz6Pyt9eO_" + params.get("instance");
@@ -21,6 +22,13 @@ const instance_name = "rosco_rEdKggz6Pyt9eO_" + params.get("instance");
 const channel = new BroadcastChannel(instance_name);
 
 channel.onmessage = (e) => {
+  if (e.data.action === "sound") {
+    soundEnabled = e.data.value;
+    soundClock.pause();
+    soundCorrect.pause();
+    soundIncorrect.pause();
+    soundSkip.pause();
+  }
   if (e.data.action === "resetear") {
     console.log("RESET");
     stopCountdown();
@@ -75,8 +83,11 @@ function setPasapalabra(letterNumber) {
   if (pasapalabraLetter) {
     cleanLetterClasses(letterNumber);
     pasapalabraLetter.classList.add("pasa");
-    // soundSkip.currentTime = 0;
-    // soundSkip.play();
+
+    if (soundEnabled) {
+      soundSkip.currentTime = 0;
+      soundSkip.play();
+    }
   }
 }
 
@@ -85,14 +96,10 @@ function setCorrecta(letterNumber) {
   if (correctaLetter) {
     cleanLetterClasses(letterNumber);
     correctaLetter.classList.add("correcta");
-    // soundCorrect.currentTime = 0;
-    // soundCorrect.play();
-    // if (isLastWord) {
-    //   console.log("ACERTO LA ULTIMA PALABRA");
-    //   setTimeout(() => {
-    //     correctaLetter.classList.remove("active");
-    //   }, 100);
-    // }
+    if (soundEnabled) {
+      soundCorrect.currentTime = 0;
+      soundCorrect.play();
+    }
   }
 }
 
@@ -101,8 +108,10 @@ function setIncorrecta(letterNumber) {
   if (incorrectaLetter) {
     cleanLetterClasses(letterNumber);
     incorrectaLetter.classList.add("incorrecta");
-    // soundIncorrect.currentTime = 0;
-    // soundIncorrect.play();
+    if (soundEnabled) {
+      soundIncorrect.currentTime = 0;
+      soundIncorrect.play();
+    }
   }
 }
 
@@ -194,8 +203,10 @@ function startCountdown() {
     channel.postMessage({ action: "time_tick", value: timeLeft });
   }, 1000);
 
-  // soundClock.currentTime = 0;
-  // soundClock.play();
+  if (soundEnabled) {
+    soundClock.currentTime = 0;
+    soundClock.play();
+  }
 }
 
 function stopCountdown() {
@@ -203,5 +214,7 @@ function stopCountdown() {
   clockElement.classList.remove("active");
 
   clearInterval(timeInterval);
-  // soundClock.pause();
+  if (soundEnabled) {
+    soundClock.pause();
+  }
 }

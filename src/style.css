@@ -25,6 +25,7 @@ body {
 }
 
 #roscapalabra {
+  user-select: none;
   width: 100%;
   height: 100dvh;
   /* background: rgb(255, 141, 191); */

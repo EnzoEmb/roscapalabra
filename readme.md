@@ -5,10 +5,10 @@
 ## Como instalar:
 
 - Añadir nueva fuente de **Navegador** en OBS
-- Ingresar esta URL: `###`
+- Ingresar esta URL: `https://roscapalabra.enzovergara.com/`
 - Configurar Ancho y Alto al tamaño de tu escena
 - Ir a **Paneles -> Paneles de navegador personalizados**
-- Asignar un nombre al Dock e ingresar en URL: `###/controls.html`
+- Asignar un nombre al Dock e ingresar en URL: `https://roscapalabra.enzovergara.com/controls.html`
 - Ajustar el tamaño de la fuente a tu escena y ya esta listo para usar
 
 ### Como agregar una segunda instancia:
