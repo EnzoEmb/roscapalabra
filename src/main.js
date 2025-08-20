@@ -15,7 +15,7 @@ let isFirstRound = true;
 let isLastWord = false;
 let isGameFinished = false;
 
-const channel = new BroadcastChannel("roscopalabra1548");
+const channel = new BroadcastChannel("rosco_rEdKggz6Pyt9eO_");
 
 channel.onmessage = (e) => {
   if (e.data.action === "play") {
@@ -58,7 +58,6 @@ function setPasapalabra(letterNumber) {
 }
 
 function setCorrecta(letterNumber) {
-  console.log("setCorrecta", letterNumber);
   const correctaLetter = document.querySelector(`.letter-${letterNumber}`);
   if (correctaLetter) {
     cleanLetterClasses(letterNumber);
@@ -87,8 +86,6 @@ function setIncorrecta(letterNumber) {
 function setActiveLetter(letterNumber) {
   const activeLetter = document.querySelector(".letter.active");
   const newActiveLetter = document.querySelector(`.letter-${letterNumber}`);
-
-  console.log(newActiveLetter);
 
   if (activeLetter) {
     activeLetter.classList.remove("active");

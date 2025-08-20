@@ -1,5 +1,4 @@
-const broadcast_id = "roscopalabra1548";
-const channel = new BroadcastChannel("roscopalabra1548");
+const channel = new BroadcastChannel("rosco_rEdKggz6Pyt9eO_");
 
 document.getElementById("play").addEventListener("click", () => {
   channel.postMessage({ action: "play" });
