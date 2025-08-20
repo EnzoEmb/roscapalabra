@@ -9,6 +9,12 @@
     /* animation-timing-function: cubic-bezier(0.51, 0.92, 0.24, 1.15); */
     animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
+  .letter {
+    span {
+      animation: letter_in 3s ease-out 1 backwards;
+      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+  }
 }
 
 .animate-out {
@@ -20,6 +26,12 @@
   .rosca {
     animation: rosco_out 2s ease-out 1 0s forwards;
     animation-timing-function: cubic-bezier(0.56, 0, 0.835, 0.16);
+  }
+  .letter {
+    span {
+      animation: letter_out 2s ease-out 1 backwards;
+      animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
   }
 }
 
@@ -40,12 +52,40 @@
     opacity: 1;
   }
   to {
-    rotate: 140deg;
-    scale: 3;
+    rotate: 40deg;
+    scale: 2;
     opacity: 0;
   }
 }
 
+@keyframes letter_out {
+  from {
+    scale: 1;
+    opacity: 1;
+    /* translate: 0 0%; */
+    rotate: 0deg;
+  }
+  to {
+    scale: 0.4;
+    opacity: 0;
+    /* translate: 0 10%; */
+    rotate: -50deg;
+  }
+}
+@keyframes letter_in {
+  from {
+    scale: 0.4;
+    opacity: 0;
+    /* translate: 0 10%; */
+    rotate: 70deg;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+    /* translate: 0 0%; */
+    rotate: 0deg;
+  }
+}
 @keyframes clock_in {
   from {
     scale: 0.6;
@@ -67,4 +107,85 @@
     scale: 1;
     opacity: 1;
   }
+}
+.letter[data-index="1"] span {
+  animation-delay: 0.05s;
+}
+.letter[data-index="2"] span {
+  animation-delay: 0.1s;
+}
+.letter[data-index="3"] span {
+  animation-delay: 0.15s;
+}
+.letter[data-index="4"] span {
+  animation-delay: 0.2s;
+}
+.letter[data-index="5"] span {
+  animation-delay: 0.25s;
+}
+.letter[data-index="6"] span {
+  animation-delay: 0.3s;
+}
+.letter[data-index="7"] span {
+  animation-delay: 0.35s;
+}
+.letter[data-index="8"] span {
+  animation-delay: 0.4s;
+}
+.letter[data-index="9"] span {
+  animation-delay: 0.45s;
+}
+.letter[data-index="10"] span {
+  animation-delay: 0.5s;
+}
+.letter[data-index="11"] span {
+  animation-delay: 0.55s;
+}
+.letter[data-index="12"] span {
+  animation-delay: 0.6s;
+}
+.letter[data-index="13"] span {
+  animation-delay: 0.65s;
+}
+.letter[data-index="14"] span {
+  animation-delay: 0.7s;
+}
+.letter[data-index="15"] span {
+  animation-delay: 0.75s;
+}
+.letter[data-index="16"] span {
+  animation-delay: 0.8s;
+}
+.letter[data-index="17"] span {
+  animation-delay: 0.85s;
+}
+.letter[data-index="18"] span {
+  animation-delay: 0.9s;
+}
+.letter[data-index="19"] span {
+  animation-delay: 0.95s;
+}
+.letter[data-index="20"] span {
+  animation-delay: 1s;
+}
+.letter[data-index="21"] span {
+  animation-delay: 1.05s;
+}
+.letter[data-index="22"] span {
+  animation-delay: 1.1s;
+}
+.letter[data-index="23"] span {
+  animation-delay: 1.15s;
+}
+.letter[data-index="24"] span {
+  animation-delay: 1.2s;
+}
+.letter[data-index="25"] span {
+  animation-delay: 1.25s;
+}
+.letter[data-index="26"] span {
+  animation-delay: 1.3s;
+}
+.letter[data-index="27"] span {
+  animation-delay: 1.35s;
 }

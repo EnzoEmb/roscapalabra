@@ -54,37 +54,45 @@ body {
     aspect-ratio: 1/1;
     font-weight: 800;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.2);
-
+    /* box-shadow: 0 0 0 1px peru; */
     font-size: clamp(32px, 5.5vh, 150px);
     border-radius: 100px;
-    &:before {
-      border: 3px solid white;
-      z-index: -1;
-      content: "";
-      border-radius: 100px;
-      transition: all 0.2s ease;
-      background-size: 100%;
-      background-image: linear-gradient(47deg, rgba(0, 75, 255, 1) 0%, rgba(25, 120, 255, 1) 100%);
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
-      width: 100%;
-      box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
-      height: 100%;
+      inset: 0;
+      &:before {
+        border: 3px solid white;
+        z-index: -1;
+        content: "";
+        border-radius: 100px;
+        transition: all 0.2s ease;
+        background-size: 100%;
+        background-image: linear-gradient(
+          47deg,
+          rgba(0, 75, 255, 1) 0%,
+          rgba(25, 120, 255, 1) 100%
+        );
+        position: absolute;
+        width: 100%;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+        height: 100%;
+      }
     }
-    &.incorrecta:before {
+    &.incorrecta span:before {
       background-image: linear-gradient(47deg, rgba(204, 45, 45, 1) 0%, rgba(222, 61, 61, 1) 100%);
     }
-    &.correcta:before {
+    &.correcta span:before {
       background-image: linear-gradient(47deg, rgba(0, 169, 57, 1) 0%, rgba(9, 213, 69, 1) 100%);
     }
-    &.pasa:before {
+    &.pasa span:before {
       background-image: linear-gradient(47deg, rgb(224 177 35) 0%, rgb(243 255 32) 100%);
     }
     &.active {
-      &:before {
+      span:before {
         border: 4px solid #e0f7ff;
         animation: active 0.5s ease-in-out infinite alternate;
         background-image: linear-gradient(47deg, rgb(78 149 255) 0%, rgb(10 199 255) 100%);
