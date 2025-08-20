@@ -4,6 +4,7 @@ const soundClock = new Audio("/sfx/clock-ticking.mp3");
 const soundCorrect = new Audio("/sfx/correct.mp3");
 const soundIncorrect = new Audio("/sfx/wrong.mp3");
 const soundSkip = new Audio("/sfx/skip.mp3");
+const soundFadeIn = new Audio("/sfx/fade-in.mp3");
 
 const clockElement = document.querySelector(".clock");
 const initialTime = 120;
@@ -26,10 +27,19 @@ channel.onmessage = (e) => {
   if (e.data.action === "animate-in") {
     document.body.classList.remove("animate-in", "animate-out");
     document.body.classList.add("animate-in");
+
+    if (soundEnabled) {
+      soundFadeIn.currentTime = 0;
+      soundFadeIn.play();
+    }
   }
   if (e.data.action === "animate-out") {
     document.body.classList.remove("animate-in", "animate-out");
     document.body.classList.add("animate-out");
+    if (soundEnabled) {
+      soundFadeIn.currentTime = 0;
+      soundFadeIn.play();
+    }
   }
   if (e.data.action === "sound") {
     soundEnabled = e.data.value;
@@ -37,6 +47,7 @@ channel.onmessage = (e) => {
     soundCorrect.pause();
     soundIncorrect.pause();
     soundSkip.pause();
+    soundFadeIn.pause();
   }
   if (e.data.action === "resetear") {
     console.log("RESET");
@@ -213,6 +224,7 @@ function startCountdown() {
   }, 1000);
 
   if (soundEnabled) {
+    soundClock.loop = true;
     soundClock.currentTime = 0;
     soundClock.play();
   }
