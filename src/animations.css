@@ -1,0 +1,70 @@
+.animate-in {
+  .clock {
+    animation: clock_in 1s ease-out 1 1.5s forwards;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .rosca {
+    animation: rosco_in 3s ease-out 1;
+    /* animation-timing-function: cubic-bezier(0.51, 0.92, 0.24, 1.15); */
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+}
+
+.animate-out {
+  .clock {
+    animation: clock_out 1s ease-out 1 0s backwards;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .rosca {
+    animation: rosco_out 2s ease-out 1 0s forwards;
+    animation-timing-function: cubic-bezier(0.56, 0, 0.835, 0.16);
+  }
+}
+
+@keyframes clock_out {
+  from {
+    scale: 1;
+    opacity: 1;
+  }
+  to {
+    scale: 0.6;
+    opacity: 0;
+  }
+}
+@keyframes rosco_out {
+  from {
+    rotate: 0deg;
+    scale: 1;
+    opacity: 1;
+  }
+  to {
+    rotate: 140deg;
+    scale: 3;
+    opacity: 0;
+  }
+}
+
+@keyframes clock_in {
+  from {
+    scale: 0.6;
+    opacity: 0;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+@keyframes rosco_in {
+  from {
+    rotate: 140deg;
+    scale: 3;
+    opacity: 0;
+  }
+  to {
+    rotate: 0deg;
+    scale: 1;
+    opacity: 1;
+  }
+}

@@ -22,6 +22,15 @@ const instance_name = "rosco_rEdKggz6Pyt9eO_" + params.get("instance");
 const channel = new BroadcastChannel(instance_name);
 
 channel.onmessage = (e) => {
+  console.log(e);
+  if (e.data.action === "animate-in") {
+    document.body.classList.remove("animate-in", "animate-out");
+    document.body.classList.add("animate-in");
+  }
+  if (e.data.action === "animate-out") {
+    document.body.classList.remove("animate-in", "animate-out");
+    document.body.classList.add("animate-out");
+  }
   if (e.data.action === "sound") {
     soundEnabled = e.data.value;
     soundClock.pause();

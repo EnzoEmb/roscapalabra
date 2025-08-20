@@ -20,6 +20,17 @@ function initInstance(instance_name) {
   const btn_resetear = instance_container.querySelector(".btn_reset");
   const time_left = instance_container.querySelector(".btn_time_left");
 
+  const btn_animate_in = instance_container.querySelector(".btn_animate_in");
+  const btn_animate_out = instance_container.querySelector(".btn_animate_out");
+
+  btn_animate_in.addEventListener("click", () => {
+    channel.postMessage({ action: "animate-in" });
+  });
+
+  btn_animate_out.addEventListener("click", () => {
+    channel.postMessage({ action: "animate-out" });
+  });
+
   checkbox_sound.addEventListener("change", () => {
     channel.postMessage({ action: "sound", value: checkbox_sound.checked });
   });
@@ -101,7 +112,7 @@ btn_new_instance.addEventListener("click", function () {
       </div>
       <div class="minititle">Tiempo restante</div>
       <input type="number" class="btn_time_left" value="120" min="1" max="999" />
-      <button type="button" class="btn_reset">RESETEAR</button>
+      <button type="button" class="btn_reset">RESETEAR ROSCO</button>
     </div>
     `
     );

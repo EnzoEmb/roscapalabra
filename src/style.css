@@ -1,4 +1,5 @@
 @import "./normalize.css";
+@import "./animations.css";
 
 body {
   background: #eee;
@@ -25,6 +26,7 @@ body {
 }
 
 #roscapalabra {
+  overflow: hidden;
   user-select: none;
   width: 100%;
   height: 100dvh;
@@ -91,6 +93,9 @@ body {
     }
   }
   .clock {
+    scale: 0.6;
+    opacity: 0;
+
     position: absolute;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -100,7 +105,6 @@ body {
     justify-content: center;
     left: 50px;
     bottom: 50px;
-    background-image: linear-gradient(47deg, rgba(0, 75, 255, 1) 0%, rgba(25, 120, 255, 1) 100%);
 
     font-weight: 800;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
@@ -113,15 +117,27 @@ body {
     /* border: 4px solid white; */
     /* transition: 0.2s border; */
     box-shadow: 0 0 0 3px white;
+    z-index: 0;
+    &:after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      inset: 0;
+      background-image: linear-gradient(47deg, rgba(0, 75, 255, 1) 0%, rgba(25, 120, 255, 1) 100%);
+      z-index: -1;
+    }
     &:before {
       content: "";
       position: absolute;
       inset: 0;
-      background: conic-gradient(from 0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      background: conic-gradient(
+        from 0deg,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 1) 100%
+      );
       border-radius: 50%;
       scale: 1.15;
       z-index: -1;
-      border: 1px solid white;
       animation: rotate 2s linear infinite;
       animation-fill-mode: forwards;
       animation-play-state: paused;
@@ -155,6 +171,7 @@ body {
     scale: 1.125;
   }
 }
+
 /* Positioning each letter around the circle */
 /* Each letter positioned around the circle */
 
