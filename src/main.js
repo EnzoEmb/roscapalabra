@@ -155,11 +155,12 @@ function startCountdown() {
   clockElement.classList.add("active");
 
   // check that countdown is not playing
-  if (timeInterval) {
-    return;
-  }
+  // if (timeInterval) {
+  //   return;
+  // }
 
   timeInterval = setInterval(() => {
+    console.log("tick");
     if (timeLeft <= 0) {
       clearInterval(timeInterval);
       // clockElement.textContent = "Time's up!";
