@@ -4,6 +4,7 @@ const btn_play = document.getElementById("play");
 const btn_pasapalabra = document.getElementById("pasapalabra");
 const btn_correcta = document.getElementById("correcta");
 const btn_incorrecta = document.getElementById("incorrecta");
+const time_left = document.getElementById("time_left");
 
 btn_play.addEventListener("click", () => {
   channel.postMessage({ action: "play" });
@@ -32,3 +33,17 @@ btn_incorrecta.addEventListener("click", () => {
   btn_correcta.disabled = true;
   btn_incorrecta.disabled = true;
 });
+
+time_left.addEventListener("change", () => {
+  console.log(time_left.value);
+  console.log("triggered change");
+  channel.postMessage({ action: "time-change", value: time_left.value });
+});
+
+// recive msgs
+channel.onmessage = (e) => {
+  if (e.data.action === "time_tick") {
+    console.log(e.data.value);
+    time_left.value = e.data.value;
+  }
+};

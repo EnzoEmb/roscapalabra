@@ -45,6 +45,10 @@ channel.onmessage = (e) => {
     removeActiveLetter();
     stopCountdown();
   }
+  if (e.data.action === "time-change") {
+    timeLeft = e.data.value;
+    clockElement.textContent = timeLeft;
+  }
 };
 
 function setPasapalabra(letterNumber) {
@@ -168,6 +172,7 @@ function startCountdown() {
       clockElement.textContent = timeLeft;
       timeLeft--;
     }
+    channel.postMessage({ action: "time_tick", value: timeLeft });
   }, 1000);
 
   // soundClock.currentTime = 0;
