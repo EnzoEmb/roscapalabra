@@ -9,9 +9,10 @@ body {
   box-sizing: border-box;
 }
 :root {
-  --circle-size: 600px; /* overall circle container */
-  --letter-size: 58px; /* each letter size */
-  --radius: 280px; /* distance from center */
+  --circle-size: 92dvh; /* overall circle container */
+  /* --radius: 280px; distance from center */
+  --letter-size: clamp(58px, 8vh, 150px);
+  --radius: 41vh;
 }
 @font-face {
   font-family: "Nunito";
@@ -33,28 +34,20 @@ body {
   align-items: center;
   justify-content: center;
   .rosca {
-    /* background: #b9f8ff; */
     position: relative;
     width: var(--circle-size);
-    height: var(--circle-size);
     margin: 0 auto;
     border-radius: 50%;
-  }
-  .infobox {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: red;
+    aspect-ratio: 1/1;
+    box-shadow: 0 0 0 5px peru;
   }
   .letter {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -30px;
-    width: 58px;
+    margin: calc(var(--letter-size) / -2);
+
+    width: var(--letter-size);
     aspect-ratio: 1/1;
     font-weight: 800;
     color: white;
@@ -63,6 +56,8 @@ body {
     justify-content: center;
     text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.2);
     font-size: 36px;
+
+    font-size: clamp(32px, 2.5vw, 150px);
     border-radius: 100px;
     &:before {
       border: 3px solid white;
