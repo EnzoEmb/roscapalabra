@@ -1,4 +1,4 @@
-## Overlay Roscopalabra para OBS con controles
+## Overlay Roscopalabra OBS
 
 ![Banner](.github/roscopalabra.jpg)
 
