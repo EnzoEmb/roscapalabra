@@ -15,7 +15,10 @@ let isFirstRound = true;
 let isLastWord = false;
 let isGameFinished = false;
 
-const channel = new BroadcastChannel("rosco_rEdKggz6Pyt9eO_");
+const params = new URLSearchParams(window.location.search);
+const instance_name = "rosco_rEdKggz6Pyt9eO_" + params.get("instance");
+
+const channel = new BroadcastChannel(instance_name);
 
 channel.onmessage = (e) => {
   if (e.data.action === "resetear") {

@@ -1,6 +1,9 @@
 import "./controls.css";
 
-const channel = new BroadcastChannel("rosco_rEdKggz6Pyt9eO_");
+const params = new URLSearchParams(window.location.search);
+const instance_name = "rosco_rEdKggz6Pyt9eO_" + params.get("instance");
+
+const channel = new BroadcastChannel(instance_name);
 
 const btn_play = document.getElementById("play");
 const btn_pasapalabra = document.getElementById("pasapalabra");
