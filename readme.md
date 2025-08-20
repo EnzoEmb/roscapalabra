@@ -7,7 +7,7 @@
 - Añadir nueva fuente de **Navegador** en OBS
 - Ingresar esta URL: `###`
 - Configurar Ancho y Alto al tamaño de tu escena
-- Ir a Docks -> Custom Browser Docks
+- Ir a **Paneles -> Paneles de navegador personalizados**
 - Asignar un nombre al Dock e ingresar en URL: `###/controls.html`
 - Ajustar el tamaño de la fuente a tu escena y ya esta listo para usar
 
