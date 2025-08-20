@@ -11,6 +11,9 @@ let timeInterval;
 let timeLeft = initialTime;
 let activeLetter = 1;
 let numberOfLetters = 27;
+let isFirstRound = true;
+let isLastWord = false;
+let isGameFinished = false;
 
 const channel = new BroadcastChannel("roscopalabra1548");
 
@@ -31,6 +34,7 @@ channel.onmessage = (e) => {
     // Handle correcta action
     setCorrecta(activeLetter);
     sumActiveLetter();
+
     setActiveLetter(activeLetter);
   }
 
@@ -48,18 +52,25 @@ function setPasapalabra(letterNumber) {
   if (pasapalabraLetter) {
     cleanLetterClasses(letterNumber);
     pasapalabraLetter.classList.add("pasa");
-    soundSkip.currentTime = 0;
-    soundSkip.play();
+    // soundSkip.currentTime = 0;
+    // soundSkip.play();
   }
 }
 
 function setCorrecta(letterNumber) {
+  console.log("setCorrecta", letterNumber);
   const correctaLetter = document.querySelector(`.letter-${letterNumber}`);
   if (correctaLetter) {
     cleanLetterClasses(letterNumber);
     correctaLetter.classList.add("correcta");
-    soundCorrect.currentTime = 0;
-    soundCorrect.play();
+    // soundCorrect.currentTime = 0;
+    // soundCorrect.play();
+    // if (isLastWord) {
+    //   console.log("ACERTO LA ULTIMA PALABRA");
+    //   setTimeout(() => {
+    //     correctaLetter.classList.remove("active");
+    //   }, 100);
+    // }
   }
 }
 
@@ -68,14 +79,16 @@ function setIncorrecta(letterNumber) {
   if (incorrectaLetter) {
     cleanLetterClasses(letterNumber);
     incorrectaLetter.classList.add("incorrecta");
-    soundIncorrect.currentTime = 0;
-    soundIncorrect.play();
+    // soundIncorrect.currentTime = 0;
+    // soundIncorrect.play();
   }
 }
 
 function setActiveLetter(letterNumber) {
   const activeLetter = document.querySelector(".letter.active");
   const newActiveLetter = document.querySelector(`.letter-${letterNumber}`);
+
+  console.log(newActiveLetter);
 
   if (activeLetter) {
     activeLetter.classList.remove("active");
@@ -86,14 +99,43 @@ function setActiveLetter(letterNumber) {
 }
 
 function sumActiveLetter() {
-  activeLetter++;
-  if (activeLetter > numberOfLetters) {
-    activeLetter = 1;
-    // clean pasapalabra letters
-    let pasapalabra_letters = document.querySelectorAll(".letter.pasa");
-    pasapalabra_letters.forEach((letter) => {
-      letter.classList.remove("pasa");
-    });
+  // console.log("sumActiveLetter", activeLetter);
+  // console.log("isFirstRound", isFirstRound);
+  if (isFirstRound) {
+    activeLetter++;
+
+    if (activeLetter > numberOfLetters) {
+      isFirstRound = false;
+
+      // clean pasapalabra letters
+      let pasapalabra_letters = document.querySelectorAll(".letter.pasa");
+      pasapalabra_letters.forEach((letter) => {
+        letter.classList.remove("pasa");
+      });
+
+      sumActiveLetter();
+    }
+  }
+
+  if (!isFirstRound) {
+    // set active letter to the closest without classes
+    const nextFreeLetter = document.querySelector(".letter:not(.correcta):not(.incorrecta)");
+
+    if (nextFreeLetter) {
+      activeLetter = nextFreeLetter.dataset.index;
+    } else {
+      isLastWord = true;
+      isGameFinished = true;
+      // is last letter, remove class active
+      setTimeout(() => {
+        removeActiveLetter();
+        stopCountdown();
+        // setCorrecta( activeLetter);
+        console.log("No more letters available");
+      }, 50);
+    }
+
+    // setActiveLetter(nextFreeLetter.dataset.index);
   }
 }
 
@@ -130,8 +172,8 @@ function startCountdown() {
     }
   }, 1000);
 
-  soundClock.currentTime = 0;
-  soundClock.play();
+  // soundClock.currentTime = 0;
+  // soundClock.play();
 }
 
 function stopCountdown() {
@@ -139,5 +181,5 @@ function stopCountdown() {
   clockElement.classList.remove("active");
 
   clearInterval(timeInterval);
-  soundClock.pause();
+  // soundClock.pause();
 }
