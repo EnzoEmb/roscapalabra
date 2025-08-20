@@ -15,15 +15,28 @@ body {
 }
 
 main {
-  display: flex;
-  gap: 5px;
-  flex-direction: column;
+  padding-bottom: 10 0px;
+  > div {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
 }
 .top,
 .bottom {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+}
+
+footer {
+  background: #272a33;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  border-top: 1px solid #0000008f;
 }
 
 #controls {
@@ -52,6 +65,12 @@ main {
       background-color: #464b59;
       box-shadow: inset 0 0 0 1px #555b6b;
     }
+    &.sm {
+      font-size: 12px;
+      padding: 0.5em;
+      background-color: #3c404d8f;
+      align-self: flex-start;
+    }
   }
   input {
     outline: none;
@@ -69,5 +88,11 @@ main {
       background-color: #1d1f26;
       border-color: #5b6273;
     }
+  }
+  .minititle {
+    font-size: 12px;
+  }
+  .header {
+    font-weight: 600;
   }
 }
