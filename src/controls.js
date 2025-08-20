@@ -1,3 +1,5 @@
+import "./controls.css";
+
 const channel = new BroadcastChannel("rosco_rEdKggz6Pyt9eO_");
 
 const btn_play = document.getElementById("play");
