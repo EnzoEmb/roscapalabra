@@ -112,6 +112,11 @@ btn_new_instance.addEventListener("click", function () {
       </div>
       <div class="minititle">Tiempo restante</div>
       <input type="number" class="btn_time_left" value="120" min="1" max="999" />
+      <div class="container-animations">
+        <div class="minititle">Animaciones</div>
+        <button type="button" class="btn_animate_in">ENTRADA</button>
+        <button type="button" class="btn_animate_out">SALIDA</button>
+      </div>
       <button type="button" class="btn_reset">RESETEAR ROSCO</button>
     </div>
     `

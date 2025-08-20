@@ -33,6 +33,11 @@ main {
   gap: 5px;
   flex-wrap: wrap;
 }
+.container-animations {
+  .minititle {
+    margin-bottom: 5px;
+  }
+}
 
 footer {
   background: #272a33;
