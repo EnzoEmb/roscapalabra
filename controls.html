@@ -9,23 +9,22 @@
 
 <body>
   <main id="controls">
-    <div>
+    <div class="instance" data-id="rosco_rEdKggz6Pyt9eO_null">
       <div class="header">Rosco 1</div>
       <div class="top">
-        <button type="button" id="play" class="w-full">PLAY</button>
+        <button type="button" class="btn_play" class="w-full">PLAY</button>
       </div>
       <div class="bottom">
-        <button disabled type="button" id="correcta">CORRECTA</button>
-        <button disabled type="button" id="incorrecta">INCORRECTA</button>
-        <button disabled type="button" id="pasapalabra">PASAPALABRA</button>
+        <button disabled type="button" class="btn_correcta">CORRECTA</button>
+        <button disabled type="button" class="btn_incorrecta">INCORRECTA</button>
+        <button disabled type="button" class="btn_pasapalabra">PASAPALABRA</button>
       </div>
       <div class="minititle">Tiempo restante</div>
-      <input type="number" id="time_left" value="120" min="1" max="999" />
-      <button type="button" id="reset">RESETEAR</button>
+      <input type="number" class="btn_time_left" value="120" min="1" max="999" />
+      <button type="button" class="btn_reset">RESETEAR</button>
     </div>
     <footer>
-      <button class="sm" id="add-instance">Añadir nueva instancia</button>
-
+      <button type="button" class="sm btn_add-instance">Añadir nueva instancia</button>
     </footer>
   </main>
   <script type="module" src="/src/controls.js"></script>

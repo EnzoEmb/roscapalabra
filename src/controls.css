@@ -15,11 +15,16 @@ body {
 }
 
 main {
-  padding-bottom: 10 0px;
-  > div {
+  padding-bottom: 80px;
+  .instance {
     display: flex;
     gap: 5px;
     flex-direction: column;
+    &:not(:first-child) {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #3c404d;
+    }
   }
 }
 .top,
@@ -37,6 +42,7 @@ footer {
   right: 0;
   padding: 15px;
   border-top: 1px solid #0000008f;
+  z-index: 100;
 }
 
 #controls {
