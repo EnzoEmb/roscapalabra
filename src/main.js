@@ -18,6 +18,22 @@ let isGameFinished = false;
 const channel = new BroadcastChannel("rosco_rEdKggz6Pyt9eO_");
 
 channel.onmessage = (e) => {
+  if (e.data.action === "resetear") {
+    console.log("RESET");
+    stopCountdown();
+    document.querySelectorAll(".letter").forEach((e) => {
+      e.classList.remove("correcta", "incorrecta", "pasa", "active");
+    });
+    setTimeout(() => {
+      timeLeft = initialTime;
+      activeLetter = 1;
+      numberOfLetters = 27;
+      isFirstRound = true;
+      isLastWord = false;
+      isGameFinished = false;
+    }, 50);
+  }
+
   if (e.data.action === "play") {
     setActiveLetter(activeLetter);
     startCountdown();

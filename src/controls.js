@@ -6,7 +6,17 @@ const btn_play = document.getElementById("play");
 const btn_pasapalabra = document.getElementById("pasapalabra");
 const btn_correcta = document.getElementById("correcta");
 const btn_incorrecta = document.getElementById("incorrecta");
+const btn_resetear = document.getElementById("reset");
 const time_left = document.getElementById("time_left");
+
+btn_resetear.addEventListener("click", () => {
+  channel.postMessage({ action: "resetear" });
+  btn_play.disabled = false;
+  btn_pasapalabra.disabled = true;
+  btn_correcta.disabled = true;
+  btn_incorrecta.disabled = true;
+  time_left.value = 120;
+});
 
 btn_play.addEventListener("click", () => {
   channel.postMessage({ action: "play" });
