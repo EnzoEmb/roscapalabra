@@ -1,7 +1,7 @@
 ## Overlay Roscopalabra para OBS con controles
 
 ![Banner](.github/roscopalabra.jpg)
-https://github.com/enzoemb/roscapalabra/raw/main/.github/roscopalabra.mp4
+![Demo](https://github.com/enzoemb/roscapalabra/raw/main/.github/roscopalabra.mp4)
 
 # Características
 
