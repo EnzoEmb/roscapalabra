@@ -2,6 +2,14 @@
 
 ![Banner](.github/roscopalabra.jpg)
 
+# Características
+
+- No requiere instalación
+- Efectos de sonido
+- Animaciones de entrada y salida
+- Multiples instancias
+- Alta calidad vectorial
+
 ## Como instalar:
 
 - Añadir nueva fuente de **Navegador** en OBS
